@@ -1,8 +1,10 @@
-﻿using WbPortfolio.Domain.Interfaces.IRepositories.Read;
+﻿using WbPortfolio.Domain.Interfaces.IRepositories.AboutRepo;
+using WbPortfolio.Domain.Interfaces.IRepositories.Read;
 using WbPortfolio.Domain.Interfaces.IRepositories.Write;
 using WbPortfolio.Domain.Interfaces.IUnitOfWorks;
 using WbPortfolio.Persistence.Context.Data;
 using WbPortfolio.Persistence.Repositories.Read;
+using WbPortfolio.Persistence.Repositories.Repos.AboutRepo;
 using WbPortfolio.Persistence.Repositories.Write;
 
 namespace WbPortfolio.Persistence.Repositories.UnitOfWorks;
@@ -15,6 +17,30 @@ public class UnitOfWork : IUnitOfWork
     public UnitOfWork(AppDbContext context)
     {
         _context = context;
+    }
+
+    public IAboutReadRepository AboutReadRepository
+    {
+        get
+        {
+            if (!_repositories.ContainsKey(typeof(IAboutReadRepository)))
+            {
+                _repositories[typeof(IAboutReadRepository)] = new AboutReadRepository(_context);
+            }
+            return (IAboutReadRepository)_repositories[typeof(IAboutReadRepository)];
+        }
+    }
+
+    public IAboutWriteRepository AboutWriteRepository
+    {
+        get
+        {
+            if (!_repositories.ContainsKey(typeof(IAboutWriteRepository)))
+            {
+                _repositories[typeof(IAboutWriteRepository)] = new AboutWriteRepository(_context);
+            }
+            return (IAboutWriteRepository)_repositories[typeof(IAboutWriteRepository)];
+        }
     }
 
     public void Dispose()

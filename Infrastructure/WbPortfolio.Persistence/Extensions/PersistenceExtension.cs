@@ -1,11 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using WbPortfolio.Domain.Interfaces.IRepositories.AboutRepo;
 using WbPortfolio.Domain.Interfaces.IRepositories.Read;
 using WbPortfolio.Domain.Interfaces.IRepositories.Write;
 using WbPortfolio.Domain.Interfaces.IUnitOfWorks;
 using WbPortfolio.Persistence.Context.Data;
 using WbPortfolio.Persistence.Repositories.Read;
+using WbPortfolio.Persistence.Repositories.Repos.AboutRepo;
 using WbPortfolio.Persistence.Repositories.UnitOfWorks;
 using WbPortfolio.Persistence.Repositories.Write;
 
@@ -24,5 +26,8 @@ public static class PersistenceExtension
         services.AddScoped(typeof(IWriteRepository<>), typeof(WriteRepository<>));
 
         services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+        services.AddScoped<IAboutReadRepository, AboutReadRepository>();
+        services.AddScoped<IAboutWriteRepository, AboutWriteRepository>();
     }
 }

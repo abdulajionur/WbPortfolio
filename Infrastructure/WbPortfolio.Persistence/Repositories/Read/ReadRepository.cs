@@ -15,7 +15,7 @@ public class ReadRepository<T> : IReadRepository<T> where T : class, IEntity
     {
         _context = context;
     }
-    private DbSet<T> Table { get => _context.Set<T>(); }
+    protected DbSet<T> Table { get => _context.Set<T>(); }
     public async Task<IList<T>> GetAllAsync(Expression<Func<T, bool>>? predicate = null, Func<IQueryable<T>, IIncludableQueryable<T, object>>? include = null, Func<IQueryable<T>, IOrderedQueryable<T>>? orderBy = null, bool enableTracking = false)
     {
         IQueryable<T> queryable = Table;
