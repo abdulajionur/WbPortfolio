@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Core\WbPortfolio.Application\WbPortfolio.Application.csproj" />
     <ProjectReference Include="..\..\Infrastructure\WbPortfolio.Persistence\WbPortfolio.Persistence.csproj" />
   </ItemGroup>
 
