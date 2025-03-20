@@ -1,6 +1,6 @@
 ﻿namespace WbPortfolio.Domain.Entities;
 
-public class Form
+public class Form : BaseEntity
 {
     public Guid Id { get; set; }
     public string? FormName { get; set; }
