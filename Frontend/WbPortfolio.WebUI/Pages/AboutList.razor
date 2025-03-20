@@ -1,0 +1,41 @@
+﻿@page "/aboutlist"
+@inject IAboutService AboutService
+
+<h3>About List</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Title</th>
+            <th scope="col">Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var about in abouts)
+        {
+            <tr >
+                <td>@about.Title</td>
+                <td>@about.Description</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+@code {
+    private List<AboutVM> abouts = new List<AboutVM>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        abouts = (await AboutService.GetAllAboutAsync()).ToList();
+    }
+}
+
+@* @for (var i = 0; i < abouts.Count; i++)
+{
+    <tr>
+        <th scope="row">@(i + 1)</th>
+        <td>@abouts[i].Title</td>
+        <td>@abouts[i].Description</td>
+    </tr>
+} *@
