@@ -1,0 +1,28 @@
+﻿@* @page "/about"
+@inject HttpClient Http
+
+
+<h1>Hakkımda</h1>
+
+@if (aboutVMList != null && aboutVMList.Any())
+{
+    @foreach (var item in aboutVMList)
+    {
+        <p><strong>Başlık:</strong> @item.Title</p>
+        <p><strong>Açıklama:</strong> @item.Description</p>
+    }
+}
+else
+{
+    <p>Veriler yükleniyor...</p>
+}
+
+@code {
+    private List<AboutVM> aboutVMList;
+
+    protected override async Task OnInitializedAsync()
+    {
+        aboutVMList = await Http.GetFromJsonAsync<List<AboutVM>>("api/Abouts/GetAll");
+    }
+}
+ *@

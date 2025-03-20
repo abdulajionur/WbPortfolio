@@ -3,7 +3,7 @@ using WbPortfolio.Domain.Entities;
 
 namespace WbPortfolio.Application.DTO.AboutDtos.Read;
 
-public class GetAllAboutDto : BaseDto<GetAllAboutDto,About>
+public class GetAboutByIdDto : BaseDto<GetAboutByIdDto, About>
 {
     public Guid Id { get; set; }
     public string? Title { get; set; }
@@ -16,5 +16,4 @@ public class GetAllAboutDto : BaseDto<GetAllAboutDto,About>
     public string? Email { get; set; }
     public string? City { get; set; }
     public bool? IsFreelanceAvailable { get; set; }
-
 }

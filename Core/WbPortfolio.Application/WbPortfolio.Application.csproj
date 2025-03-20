@@ -18,8 +18,8 @@
 
   <ItemGroup>
     <Folder Include="DTO\AboutDtos\Write\" />
+    <Folder Include="Features\MediatR\About\Commands\" />
     <Folder Include="Services\External\" />
-    <Folder Include="Services\Internal\" />
   </ItemGroup>
 
   <ItemGroup>
