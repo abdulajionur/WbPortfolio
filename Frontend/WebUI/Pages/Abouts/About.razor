@@ -1,0 +1,47 @@
+﻿@page "/Abouts"
+
+<h3>About</h3>
+<button class="btn btn-outline-danger" @onclick="ToggleTableVisibility">Tabloyu Göster/Gizle</button>
+@if (showTable)
+{
+    <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Information</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var about in aboutDtos)
+            {
+                <AboutTableRow About="about" InfoClass="info" />
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    [Inject]
+    IAboutService aboutService { get; set; }
+
+    string info = "lead";
+
+    List<AboutDto> aboutDtos = new();
+    bool showTable = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await RefreshList();
+    }
+
+    async Task RefreshList()
+    {
+        aboutDtos = await aboutService.GetAllAbout();
+        StateHasChanged();
+    }
+
+    void ToggleTableVisibility()
+    {
+        showTable = !showTable;
+    }
+}
+

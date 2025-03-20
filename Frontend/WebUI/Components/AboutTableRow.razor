@@ -1,0 +1,12 @@
+﻿<tr>
+    <td class="@InfoClass">@About.GetInfo</td>
+</tr>
+@code {
+    @code {
+        [Parameter]
+        public AboutDto About { get; set; }
+
+        [Parameter]
+        public string InfoClass { get; set; }
+    }
+}

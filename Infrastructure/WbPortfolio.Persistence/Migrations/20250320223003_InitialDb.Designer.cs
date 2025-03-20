@@ -12,7 +12,7 @@ using WbPortfolio.Persistence.Context.Data;
 namespace WbPortfolio.Persistence.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250320010234_InitialDb")]
+    [Migration("20250320223003_InitialDb")]
     partial class InitialDb
     {
         /// <inheritdoc />
