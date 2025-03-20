@@ -21,6 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Core\WbPortfolio.Application\WbPortfolio.Application.csproj" />
     <ProjectReference Include="..\..\Core\WbPortfolio.Domain\WbPortfolio.Domain.csproj" />
   </ItemGroup>
 
